@@ -35,6 +35,7 @@
 			this.PassAgainTextBox = new System.Windows.Forms.TextBox();
 			this.SaveNewPassButton = new System.Windows.Forms.Button();
 			this.ErrorsLabel = new System.Windows.Forms.Label();
+			this.BackButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -104,7 +105,7 @@
 			this.SaveNewPassButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
 			this.SaveNewPassButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
 			this.SaveNewPassButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.SaveNewPassButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.SaveNewPassButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.SaveNewPassButton.Location = new System.Drawing.Point(124, 254);
 			this.SaveNewPassButton.Name = "SaveNewPassButton";
 			this.SaveNewPassButton.Size = new System.Drawing.Size(128, 37);
@@ -125,11 +126,28 @@
 			this.ErrorsLabel.Text = "ErrorsLabel";
 			this.ErrorsLabel.Visible = false;
 			// 
+			// BackButton
+			// 
+			this.BackButton.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.BackButton.FlatAppearance.BorderSize = 0;
+			this.BackButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+			this.BackButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+			this.BackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.BackButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.BackButton.Image = global::Post.WinFormsClient.Properties.Resources.back_arrow;
+			this.BackButton.Location = new System.Drawing.Point(8, 12);
+			this.BackButton.Name = "BackButton";
+			this.BackButton.Size = new System.Drawing.Size(79, 43);
+			this.BackButton.TabIndex = 7;
+			this.BackButton.UseVisualStyleBackColor = true;
+			this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
+			// 
 			// ChangePasswordControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
+			this.Controls.Add(this.BackButton);
 			this.Controls.Add(this.ErrorsLabel);
 			this.Controls.Add(this.SaveNewPassButton);
 			this.Controls.Add(this.PassAgainTextBox);
@@ -153,5 +171,6 @@
 		private System.Windows.Forms.TextBox PassAgainTextBox;
 		private System.Windows.Forms.Button SaveNewPassButton;
 		private System.Windows.Forms.Label ErrorsLabel;
+		private System.Windows.Forms.Button BackButton;
 	}
 }

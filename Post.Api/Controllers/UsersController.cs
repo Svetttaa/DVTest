@@ -150,7 +150,7 @@ namespace Post.Api.Controllers
 		/// </summary>
 		/// <param name="userId">ID пользователя</param>
 		/// <returns>Объект User в случае успеха</returns>
-		[HttpGet, Route("api/getUser/{userId}")]
+		[HttpGet, Route("api/users/getUser/{userId}")]
 		public User GetUser(Guid userId)
 	    {
 		    _logger.Info($"Получение информации о пользователе {userId}");

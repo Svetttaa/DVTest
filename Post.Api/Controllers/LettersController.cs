@@ -89,8 +89,7 @@ namespace Post.Api.Controllers
 				_timer.Stop();
 			}
 		}
-
-
+		
 		/// <summary>
 		/// Возвращает указанное количество писем
 		/// </summary>
@@ -161,7 +160,7 @@ namespace Post.Api.Controllers
 		/// </summary>
 		/// <param name="id">ID письма</param>
 		/// <returns>Объект Letter в случае успеха</returns>
-		[HttpGet, Route("api/letters/get/{id}")]
+		[HttpGet, Route("api/letters/getLetter/{id}")]
 		public Letter GetLetter(Guid id)
 		{
 			_logger.Info($"Получение письма {id}");
@@ -193,6 +192,19 @@ namespace Post.Api.Controllers
 			}
 		}
 
-		
+		[HttpGet, Route("api/letters/readLetter/{id}")]
+		public void ChangeReadStatus(Guid id)
+		{
+			try
+			{
+				_db.Letters.First(x => x.ID == id).Read = true;
+				_db.SaveChanges();
+			}
+			catch(Exception e)
+			{
+				_logger.Error(e, $"Ошибка при изменении статуса письма {id}");
+				throw Helper.GenerateException(e.Message, HttpStatusCode.InternalServerError);
+			}
+		}
 	}
 }

@@ -36,15 +36,15 @@
 			this.CurrentUserLabel = new System.Windows.Forms.Label();
 			this.UserSearchButton = new System.Windows.Forms.Button();
 			this.panel2 = new System.Windows.Forms.Panel();
+			this.PreviewLettersTable = new System.Windows.Forms.TableLayoutPanel();
 			this.panel3 = new System.Windows.Forms.Panel();
+			this.LettersUpdateBGW = new System.ComponentModel.BackgroundWorker();
 			this.panel1.SuspendLayout();
+			this.panel2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panel1
 			// 
-			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
 			this.panel1.BackColor = System.Drawing.Color.White;
 			this.panel1.Controls.Add(this.SettingsButton);
 			this.panel1.Controls.Add(this.WriteLetterButton);
@@ -67,7 +67,7 @@
 			this.SettingsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
 			this.SettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.SettingsButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.SettingsButton.Image = ((System.Drawing.Image)(resources.GetObject("SettingsButton.Image")));
+			this.SettingsButton.Image = global::Post.WinFormsClient.Properties.Resources.settings_128;
 			this.SettingsButton.Location = new System.Drawing.Point(173, 46);
 			this.SettingsButton.Name = "SettingsButton";
 			this.SettingsButton.Size = new System.Drawing.Size(75, 35);
@@ -87,7 +87,7 @@
 			this.WriteLetterButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
 			this.WriteLetterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.WriteLetterButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.WriteLetterButton.Image = ((System.Drawing.Image)(resources.GetObject("WriteLetterButton.Image")));
+			this.WriteLetterButton.Image = global::Post.WinFormsClient.Properties.Resources.contract__1_;
 			this.WriteLetterButton.Location = new System.Drawing.Point(11, 44);
 			this.WriteLetterButton.Name = "WriteLetterButton";
 			this.WriteLetterButton.Size = new System.Drawing.Size(75, 35);
@@ -106,7 +106,7 @@
 			this.UserExitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
 			this.UserExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.UserExitButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.UserExitButton.Image = ((System.Drawing.Image)(resources.GetObject("UserExitButton.Image")));
+			this.UserExitButton.Image = global::Post.WinFormsClient.Properties.Resources.Icons8_Windows_8_User_Interface_Logout_0;
 			this.UserExitButton.Location = new System.Drawing.Point(254, 43);
 			this.UserExitButton.Name = "UserExitButton";
 			this.UserExitButton.Size = new System.Drawing.Size(75, 38);
@@ -135,25 +135,47 @@
 			this.UserSearchButton.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.UserSearchButton.FlatAppearance.BorderSize = 0;
 			this.UserSearchButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+			this.UserSearchButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
 			this.UserSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.UserSearchButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.UserSearchButton.Image = ((System.Drawing.Image)(resources.GetObject("UserSearchButton.Image")));
+			this.UserSearchButton.Image = global::Post.WinFormsClient.Properties.Resources._31914_200;
 			this.UserSearchButton.Location = new System.Drawing.Point(92, 46);
 			this.UserSearchButton.Name = "UserSearchButton";
 			this.UserSearchButton.Size = new System.Drawing.Size(75, 35);
 			this.UserSearchButton.TabIndex = 0;
 			this.UserSearchButton.UseVisualStyleBackColor = true;
+			this.UserSearchButton.Click += new System.EventHandler(this.UserSearchButton_Click);
 			// 
 			// panel2
 			// 
-			this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.panel2.BackColor = System.Drawing.Color.White;
+			this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+			this.panel2.AutoScroll = true;
+			this.panel2.BackColor = System.Drawing.SystemColors.Control;
+			this.panel2.Controls.Add(this.PreviewLettersTable);
 			this.panel2.Location = new System.Drawing.Point(0, 93);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(346, 403);
 			this.panel2.TabIndex = 1;
+			// 
+			// PreviewLettersTable
+			// 
+			this.PreviewLettersTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.PreviewLettersTable.AutoScroll = true;
+			this.PreviewLettersTable.ColumnCount = 1;
+			this.PreviewLettersTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.PreviewLettersTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.PreviewLettersTable.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.PreviewLettersTable.Location = new System.Drawing.Point(2, 310);
+			this.PreviewLettersTable.Name = "PreviewLettersTable";
+			this.PreviewLettersTable.RowCount = 1;
+			this.PreviewLettersTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.PreviewLettersTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.PreviewLettersTable.Size = new System.Drawing.Size(341, 92);
+			this.PreviewLettersTable.TabIndex = 0;
+			this.PreviewLettersTable.Visible = false;
 			// 
 			// panel3
 			// 
@@ -165,6 +187,11 @@
 			this.panel3.Name = "panel3";
 			this.panel3.Size = new System.Drawing.Size(578, 495);
 			this.panel3.TabIndex = 2;
+			// 
+			// LettersUpdateBGW
+			// 
+			this.LettersUpdateBGW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.LettersUpdateBGW_DoWork);
+			this.LettersUpdateBGW.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.LettersUpdateBGW_RunWorkerCompleted);
 			// 
 			// MainForm
 			// 
@@ -178,6 +205,7 @@
 			this.Name = "MainForm";
 			this.Text = "Post";
 			this.panel1.ResumeLayout(false);
+			this.panel2.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -192,5 +220,7 @@
 		private System.Windows.Forms.Button UserExitButton;
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.Panel panel3;
+		private System.Windows.Forms.TableLayoutPanel PreviewLettersTable;
+		private System.ComponentModel.BackgroundWorker LettersUpdateBGW;
 	}
 }

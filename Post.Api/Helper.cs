@@ -40,7 +40,7 @@ namespace Post.Api
 
 		public static void CheckLetter(Guid id)
 		{
-			if (Db.Letters.Any(l => l.ID == id))
+			if (!Db.Letters.Any(l => l.ID == id))
 			{
 				Logger.Error($"Letter ID is invalid: {id}");
 				throw GenerateException("Letter ID is invalid", HttpStatusCode.BadRequest);

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Post.Model;
 using Post.WinFormsClient.Forms;
+using Post.WinFormsClient.Properties;
 
 namespace Post.WinFormsClient.Controls
 {
@@ -23,27 +24,37 @@ namespace Post.WinFormsClient.Controls
 
 		private void SaveNewPassButton_Click(object sender, EventArgs e)
 		{
-			if(PassTextBox.Text!=PassAgainTextBox.Text)
+			if(PassTextBox.Text != PassAgainTextBox.Text)
 			{
 				ErrorsLabel.Text = "Введенные пароли не совпадают";
 				ErrorsLabel.Visible = true;
 				return;
 			}
-			if (string.IsNullOrWhiteSpace(PassTextBox.Text))
+			if (string.IsNullOrWhiteSpace(PassTextBox.Text)||PassTextBox.Text=="0")
 			{
-				ErrorsLabel.Text = "Пароль не должен быть пустым";
+				ErrorsLabel.Text = "Пароль не должен быть пустым или стандартным(0)";
 				ErrorsLabel.Visible = true;
 				return;
 			}
+
 			User u = new User
 			{
 				ID = Properties.Settings.Default.CurrentUser.ID,
-				Password= PassAgainTextBox.Text
+				Password = PassAgainTextBox.Text
 			};
 			ErrorsLabel.Text = "";
 			ErrorsLabel.Visible = false;
 			ServiceClient.ChangePassword(u);
-			//_mf.Controls.Add(//new MainControl);
+			Settings.Default.CurrentUser.Password = PassAgainTextBox.Text;
+
+			Hide();
+			_mf.ShowMainControl();
+		}
+
+		private void BackButton_Click(object sender, EventArgs e)
+		{
+			Hide();
+			_mf.ShowMainControl();
 		}
 	}
 }

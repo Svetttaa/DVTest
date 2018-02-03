@@ -38,7 +38,8 @@
 			// 
 			this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+			this.pictureBox1.ErrorImage = null;
+			this.pictureBox1.Image = global::Post.WinFormsClient.Properties.Resources.post;
 			this.pictureBox1.Location = new System.Drawing.Point(62, 51);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(238, 217);
@@ -55,7 +56,7 @@
 			this.LoginButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
 			this.LoginButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
 			this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.LoginButton.Font = new System.Drawing.Font("Segoe UI Semibold", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.LoginButton.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.LoginButton.ForeColor = System.Drawing.Color.DodgerBlue;
 			this.LoginButton.Location = new System.Drawing.Point(85, 393);
 			this.LoginButton.Name = "LoginButton";

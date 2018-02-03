@@ -12,6 +12,7 @@ namespace Post.WinFormsClient
 {
 	class ServiceClient
 	{
+
 		private static HttpClient _client;
 
 		public static void Initialize()
@@ -23,6 +24,8 @@ namespace Post.WinFormsClient
 			_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 			_client.GetAsync(@"init");
 		}
+
+		#region Users
 
 		public static object LoginUser(User user)
 		{
@@ -131,7 +134,97 @@ namespace Post.WinFormsClient
 			return null;
 		}
 
+		#endregion
+
+		#region Letters
+		public static IEnumerable<Letter> GetLetters(Guid userIdTo, int skip, int amount)
+		{
+			var response = _client.GetAsync($"letters/{userIdTo}/{skip}/{amount}").Result;
+
+			try
+			{
+				//response.EnsureSuccessStatusCode();
+
+				var ret = response.Content.ReadAsAsync<Model.Letter[]>().Result;
+
+				return ret;
+			}
+			catch (UnsupportedMediaTypeException)
+			{
+				MessageBox.Show(response.Content.ReadAsStringAsync().Result);
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show(e.Message);
+			}
+
+			return null;
+		}
+
+		public static Letter SendLetter(Letter letter)
+		{
+			var pesponse = _client.PostAsJsonAsync(@"letters/send", letter).Result.Content;
+
+			try
+			{
+				var ret = pesponse.ReadAsAsync<Model.Letter>().Result;
+				return ret;
+			}
+			catch (UnsupportedMediaTypeException)
+			{
+				MessageBox.Show(pesponse.ReadAsStringAsync().Result);
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show(e.Message);
+			}
+
+			return null;
+		}
+
+		public static void DeleteLetter(Guid id)
+		{
+			var response = _client.DeleteAsync(@"letters/" + id).Result;
+
+			try
+			{
+				response.EnsureSuccessStatusCode();
+			}
+			catch (Exception e)
+			{
+				string s = response.Content.ReadAsStringAsync().Result;
+
+				if (String.IsNullOrWhiteSpace(s))
+					MessageBox.Show(e.Message);
+				else
+					MessageBox.Show(s);
+			}
+		}
+
+		public static Letter GetLetter(Guid id)
+		{
+			var response = _client.DeleteAsync(@"letters/getLetter/" + id).Result;
+
+			try
+			{
+				response.EnsureSuccessStatusCode();
+				var ret = response.Content.ReadAsAsync<Letter>().Result;
+
+				return ret;
+			}
+			catch (UnsupportedMediaTypeException)
+			{
+				MessageBox.Show(response.Content.ReadAsStringAsync().Result);
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show(e.Message);
+			}
+
+			return null;
+		}
+		#endregion
 	}
 
-	
+
 }

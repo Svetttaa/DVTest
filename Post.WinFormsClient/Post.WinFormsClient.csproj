@@ -35,9 +35,6 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Post.WinFormsClient">
-      <HintPath>obj\Debug\Post.WinFormsClient.exe</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -93,6 +90,24 @@
     <Compile Include="Controls\MainControl.Designer.cs">
       <DependentUpon>MainControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\NewLetterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NewLetterControl.Designer.cs">
+      <DependentUpon>NewLetterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PreviewLetterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PreviewLetterControl.Designer.cs">
+      <DependentUpon>PreviewLetterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ViewLetterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ViewLetterControl.Designer.cs">
+      <DependentUpon>ViewLetterControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +131,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\MainControl.resx">
       <DependentUpon>MainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\NewLetterControl.resx">
+      <DependentUpon>NewLetterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PreviewLetterControl.resx">
+      <DependentUpon>PreviewLetterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ViewLetterControl.resx">
+      <DependentUpon>ViewLetterControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -150,6 +174,8 @@
   <ItemGroup>
     <Content Include="Resources\31914-200.png" />
     <Content Include="Resources\attach.png" />
+    <None Include="Resources\back-arrow.png" />
+    <None Include="Resources\contract %281%29.png" />
     <Content Include="Resources\Icons8-Windows-8-User-Interface-Logout-0.png" />
     <Content Include="Resources\settings-128.png" />
   </ItemGroup>
