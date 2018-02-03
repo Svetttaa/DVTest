@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Post.Model.User>
+@{
+	ViewBag.Title = "AccountsList";
+}
+
+<h2>Список аккаунтов</h2>
+
+
+<p>
+	@Html.ActionLink("Создать новый аккаунт", "AddUser")
+</p>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Account)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Password)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Name)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Account)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Password)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Name)
+			</td>
+			<td>
+				@Html.ActionLink("Редактировать", "EditData", new { id = item.ID }) |
+				@Html.ActionLink("Очистить пароль", "RemovePassword", new { id = item.ID }) |
+				@Html.ActionLink("Удалить", "DeleteUser", new { id = item.ID })
+			</td>
+		</tr>
+	}
+
+</table>

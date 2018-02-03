@@ -1,0 +1,60 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title – Post</title>
+	@*@Styles.Render("~/Content/bootstrap.css",
+			"~/Content/site.css")
+	@Scripts.Render(@"~/Scripts/jquery.js",
+			@"~/Scripts/bootstrap.js",
+			@"~/Scripts/Site.js",
+			@"~/Scripts/modernizr.js")*@
+</head>
+<body>
+	@*@string result = "Вы не авторизованы";
+		@if (User.Identity.IsAuthenticated)
+		@{
+		result = "Ваш логин: " + User.Identity.Name;
+		}*@
+
+	@*@ViewBag.Message = result;*@
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="/Home/Index" class="navbar-brand" id="logoTitle">Post</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					@if (User.Identity.IsAuthenticated)
+					{
+						<li>@Html.ActionLink("Добавить пользователя", "AddUser", "Home")</li>
+						<li>@Html.ActionLink("Список пользователей", "AccountsList", "Home")</li>
+						<li>@Html.ActionLink("Выход", "Logoff", "Home")</li>
+						
+					}
+					else
+					{
+						
+						<li>@Html.ActionLink("Вход", "Login", "Home")</li>
+					}
+				</ul>
+
+			</div>
+		</div>
+	</div>
+	<div class="container body-content">
+		@RenderBody()
+	</div>
+
+	@RenderSection("scripts", required: false)
+</body>
+</html>
