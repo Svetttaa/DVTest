@@ -45,7 +45,7 @@
 			this.BackToStartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.BackToStartButton.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.BackToStartButton.ForeColor = System.Drawing.Color.RoyalBlue;
-			this.BackToStartButton.Location = new System.Drawing.Point(-11, 164);
+			this.BackToStartButton.Location = new System.Drawing.Point(-18, 164);
 			this.BackToStartButton.Name = "BackToStartButton";
 			this.BackToStartButton.Size = new System.Drawing.Size(163, 40);
 			this.BackToStartButton.TabIndex = 2;
@@ -125,6 +125,7 @@
 			this.Controls.Add(this.BackToStartButton);
 			this.Name = "LoginControl";
 			this.Size = new System.Drawing.Size(274, 228);
+			this.Load += new System.EventHandler(this.LoginControl_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

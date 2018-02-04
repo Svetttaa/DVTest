@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using Post.Model;
+using Post.WinFormsClient.Forms;
 
 namespace Post.WinFormsClient.Controls
 {
 	public partial class NewLetterControl : UserControl
 	{
-		public NewLetterControl()
+		private MainForm _owner;
+		private readonly User _userTo;
+
+		public NewLetterControl(MainForm owner, User to = null)
 		{
 			InitializeComponent();
+			_owner = owner;
+			if(to != null)
+				_userTo = to;
 		}
 	}
 }

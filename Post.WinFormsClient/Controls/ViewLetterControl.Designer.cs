@@ -30,13 +30,12 @@
 		{
 			this.TitleLabel = new System.Windows.Forms.Label();
 			this.UserFromLabel = new System.Windows.Forms.Label();
-			this.TextLabel = new System.Windows.Forms.Label();
 			this.AnswerButton = new System.Windows.Forms.Button();
 			this.DeleteButton = new System.Windows.Forms.Button();
-			this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
 			this.AttachesLabel = new System.Windows.Forms.Label();
 			this.AttachesPictureBox = new System.Windows.Forms.PictureBox();
 			this.DateLabel = new System.Windows.Forms.Label();
+			this.TextLetterTextBox = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.AttachesPictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -60,17 +59,6 @@
 			this.UserFromLabel.TabIndex = 1;
 			this.UserFromLabel.Text = "От";
 			// 
-			// TextLabel
-			// 
-			this.TextLabel.BackColor = System.Drawing.Color.White;
-			this.TextLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.TextLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.TextLabel.Location = new System.Drawing.Point(19, 81);
-			this.TextLabel.Name = "TextLabel";
-			this.TextLabel.Size = new System.Drawing.Size(478, 195);
-			this.TextLabel.TabIndex = 2;
-			this.TextLabel.Text = "Тут будет находится текст письма";
-			// 
 			// AnswerButton
 			// 
 			this.AnswerButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -92,13 +80,6 @@
 			this.DeleteButton.Text = "Удалить";
 			this.DeleteButton.UseVisualStyleBackColor = true;
 			this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
-			// 
-			// vScrollBar1
-			// 
-			this.vScrollBar1.Location = new System.Drawing.Point(480, 81);
-			this.vScrollBar1.Name = "vScrollBar1";
-			this.vScrollBar1.Size = new System.Drawing.Size(17, 195);
-			this.vScrollBar1.TabIndex = 5;
 			// 
 			// AttachesLabel
 			// 
@@ -130,17 +111,25 @@
 			this.DateLabel.TabIndex = 8;
 			this.DateLabel.Text = "Дата";
 			// 
+			// TextLetterTextBox
+			// 
+			this.TextLetterTextBox.Location = new System.Drawing.Point(16, 83);
+			this.TextLetterTextBox.Multiline = true;
+			this.TextLetterTextBox.Name = "TextLetterTextBox";
+			this.TextLetterTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.TextLetterTextBox.Size = new System.Drawing.Size(480, 206);
+			this.TextLetterTextBox.TabIndex = 9;
+			// 
 			// ViewLetterControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.TextLetterTextBox);
 			this.Controls.Add(this.DateLabel);
 			this.Controls.Add(this.AttachesPictureBox);
 			this.Controls.Add(this.AttachesLabel);
-			this.Controls.Add(this.vScrollBar1);
 			this.Controls.Add(this.DeleteButton);
 			this.Controls.Add(this.AnswerButton);
-			this.Controls.Add(this.TextLabel);
 			this.Controls.Add(this.UserFromLabel);
 			this.Controls.Add(this.TitleLabel);
 			this.Name = "ViewLetterControl";
@@ -155,12 +144,11 @@
 
 		private System.Windows.Forms.Label TitleLabel;
 		private System.Windows.Forms.Label UserFromLabel;
-		private System.Windows.Forms.Label TextLabel;
 		private System.Windows.Forms.Button AnswerButton;
 		private System.Windows.Forms.Button DeleteButton;
-		private System.Windows.Forms.VScrollBar vScrollBar1;
 		private System.Windows.Forms.Label AttachesLabel;
 		private System.Windows.Forms.PictureBox AttachesPictureBox;
 		private System.Windows.Forms.Label DateLabel;
+		private System.Windows.Forms.TextBox TextLetterTextBox;
 	}
 }

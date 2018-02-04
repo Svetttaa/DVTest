@@ -17,25 +17,27 @@ namespace Post.WinFormsClient.Controls
 		private Letter _letter;
 		private MainForm _mf;
 
-		public ViewLetterControl(Letter letter,MainForm MF)
+		public ViewLetterControl(Guid idLetter,MainForm MF)
 		{
 			InitializeComponent();
-			_letter = letter;
+			_letter = ServiceClient.GetLetter(idLetter);
 			_mf = MF;
 			TitleLabel.Text = _letter.Title;
 			UserFromLabel.Text = _letter.UserFrom.Name;
-			TextLabel.Text = _letter.Text;
+			TextLetterTextBox.Text = _letter.Text;
 			DateLabel.Text = _letter.Time.ToString();
 		}
 
 		private void AnswerButton_Click(object sender, EventArgs e)
 		{
-
+			Hide();
+			_mf.AnswerLetter(_letter.UserFrom);
 		}
 
 		private void DeleteButton_Click(object sender, EventArgs e)
 		{
 			Hide();
+			_mf.MinusLettersCount();
 			ServiceClient.DeleteLetter(_letter.ID);
 			_mf.ShowMainControl();
 		}

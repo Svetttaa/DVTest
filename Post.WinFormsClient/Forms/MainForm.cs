@@ -20,6 +20,7 @@ namespace Post.WinFormsClient.Forms
 		private bool KeepUpdating = true;
 		private int Skip = 0;
 		private const int Amount = 10;
+		private int LettersCount = ServiceClient.GetAmountLetters(Settings.Default.UserID);
 
 		public MainForm()
 		{
@@ -40,6 +41,7 @@ namespace Post.WinFormsClient.Forms
 			Settings.Default.CurrentUser = null;
 			Settings.Default.UserID = new Guid();
 			Settings.Default.Save();
+			KeepUpdating = false;
 			Close();
 			(new StartForm()).Show();
 		}
@@ -69,62 +71,72 @@ namespace Post.WinFormsClient.Forms
 
 		private void WriteLetterButton_Click(object sender, EventArgs e)
 		{
-
+			panel3.Controls.Clear();
+			var l=new NewLetterControl(this);
+			panel3.Controls.Add(l);
 		}
 
+		public void AnswerLetter(User user)
+		{
+			panel3.Controls.Clear();
+			var l = new NewLetterControl(this,user);
+			panel3.Controls.Add(l);
+		}
 		public void OpenLetter(Letter letter)
 		{
 			panel3.Controls.Clear();
-			var l = new ViewLetterControl(letter, this);
+			var l = new ViewLetterControl(letter.ID, this);
+			//l.Location = new Point(Top = 50, Left = 50);
 			panel3.Controls.Add(l);
 		}
 
 		private void LettersUpdateBGW_DoWork(object sender, DoWorkEventArgs e)
 		{
 			Thread.Sleep(UpdaterDelay);
-
-			e.Result = KeepUpdating
-						   ? ServiceClient.GetLetters(Settings.Default.CurrentUser.ID, Skip, Amount) as Letter[]
-						   : new Letter[0];
+			var currentAmount =KeepUpdating? ServiceClient.GetAmountLetters(Settings.Default.UserID):0;
+			if (currentAmount == LettersCount && UpdaterDelay!=0)
+			{
+				e.Result = new Letter[0];
+			}
+			else
+			{
+				e.Result = KeepUpdating
+					           ? ServiceClient.GetLetters(Settings.Default.CurrentUser.ID, Skip, Amount) as Letter[]
+					           : new Letter[0];
+				LettersCount = currentAmount;
+			}
 		}
 
 		private void LettersUpdateBGW_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
-			PreviewLettersTable.Controls.Clear();
-			PreviewLettersTable.RowCount = 1;
 
 			var letters = e.Result as Letter[];
 
-			for (int i = 0; i < letters.Length; i++)
+			if(letters.Length > 0)
 			{
-				panel2.Controls.Add(
-									new PreviewLetterControl(letters[i], this)
-									{
-										Top = i * 75 + 10,
-									}
-								   );
-			}
-
-			// Избавиться от таблицы
-			// Метод для возвращения количества писем
-			// Очищать панель при обновлении
-			// Отправлять изменение статуса
-			// Подумать над дизайном превью
-			foreach (var l in e.Result as Letter[])
-			{
-				//PreviewLettersTable.RowCount++;
-				//PreviewLettersTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 80));
-				//PreviewLettersTable.Controls.Add(new PreviewLetterControl(l, this), 0, PreviewLettersTable.RowCount - 1);
-
+				panel2.Controls.Clear();
+				for(int i = 0; i < letters.Length; i++)
+				{
+					panel2.Controls.Add(
+					                    new PreviewLetterControl(letters[i], this)
+					                    {
+						                    Top = i * 75 + 20,
+					                    }
+					                   );
+				}
 
 			}
 
-			PreviewLettersTable.RowCount++;
 			if (UpdaterDelay == 0)
 				UpdaterDelay = 7000;
 
 			if (KeepUpdating)
 				LettersUpdateBGW.RunWorkerAsync();
+		}
+
+		public void MinusLettersCount()
+		{
+			LettersCount--;
 		}
 	}
 }

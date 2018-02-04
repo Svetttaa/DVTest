@@ -114,5 +114,10 @@ namespace Post.WinFormsClient.Controls
 		{
 
 		}
+
+		private void LoginControl_Load(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

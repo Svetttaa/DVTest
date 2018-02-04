@@ -39,12 +39,13 @@
 			this.DateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.DateLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.DateLabel.Location = new System.Drawing.Point(207, -1);
+			this.DateLabel.Location = new System.Drawing.Point(238, -1);
 			this.DateLabel.Name = "DateLabel";
 			this.DateLabel.Size = new System.Drawing.Size(84, 76);
 			this.DateLabel.TabIndex = 0;
 			this.DateLabel.Text = "Date";
 			this.DateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.DateLabel.Click += new System.EventHandler(this.PreviewLetterControl_Click);
 			// 
 			// NameLabel
 			// 
@@ -55,6 +56,7 @@
 			this.NameLabel.Size = new System.Drawing.Size(43, 17);
 			this.NameLabel.TabIndex = 1;
 			this.NameLabel.Text = "Name";
+			this.NameLabel.Click += new System.EventHandler(this.PreviewLetterControl_Click);
 			// 
 			// TextLabel
 			// 
@@ -65,6 +67,7 @@
 			this.TextLabel.Size = new System.Drawing.Size(78, 21);
 			this.TextLabel.TabIndex = 2;
 			this.TextLabel.Text = "TextLetter";
+			this.TextLabel.Click += new System.EventHandler(this.PreviewLetterControl_Click);
 			// 
 			// TitleLabel
 			// 
@@ -75,6 +78,7 @@
 			this.TitleLabel.Size = new System.Drawing.Size(32, 17);
 			this.TitleLabel.TabIndex = 3;
 			this.TitleLabel.Text = "Title";
+			this.TitleLabel.Click += new System.EventHandler(this.PreviewLetterControl_Click);
 			// 
 			// PreviewLetterControl
 			// 
@@ -87,7 +91,7 @@
 			this.Controls.Add(this.DateLabel);
 			this.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.Name = "PreviewLetterControl";
-			this.Size = new System.Drawing.Size(290, 74);
+			this.Size = new System.Drawing.Size(321, 74);
 			this.Click += new System.EventHandler(this.PreviewLetterControl_Click);
 			this.ResumeLayout(false);
 			this.PerformLayout();

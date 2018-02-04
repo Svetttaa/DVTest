@@ -203,11 +203,11 @@ namespace Post.WinFormsClient
 
 		public static Letter GetLetter(Guid id)
 		{
-			var response = _client.DeleteAsync(@"letters/getLetter/" + id).Result;
+			var response = _client.GetAsync(@"letters/getLetter/" + id).Result;
 
 			try
 			{
-				response.EnsureSuccessStatusCode();
+			//	response.EnsureSuccessStatusCode();
 				var ret = response.Content.ReadAsAsync<Letter>().Result;
 
 				return ret;
@@ -222,6 +222,47 @@ namespace Post.WinFormsClient
 			}
 
 			return null;
+		}
+
+		public static void ChangeReadStatus(Guid id)
+		{
+			var response = _client.GetAsync("letters/readLetter/"+id).Result;
+
+			try
+			{
+				response.EnsureSuccessStatusCode();
+			}
+			catch (Exception e)
+			{
+				string s = response.Content.ReadAsStringAsync().Result;
+
+				if (String.IsNullOrWhiteSpace(s))
+					MessageBox.Show(e.Message);
+				else
+					MessageBox.Show(s);
+			}
+		}
+
+		public static int GetAmountLetters(Guid userFromId)
+		{
+			var response = _client.GetAsync(@"letters/getAmount/" + userFromId).Result;
+
+			try
+			{
+				var ret = response.Content.ReadAsAsync<int>().Result;
+
+				return ret;
+			}
+			catch (UnsupportedMediaTypeException)
+			{
+				MessageBox.Show(response.Content.ReadAsStringAsync().Result);
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show(e.Message);
+			}
+
+			return 0;
 		}
 		#endregion
 	}

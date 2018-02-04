@@ -89,7 +89,7 @@ namespace Post.Api.Controllers
 				_timer.Stop();
 			}
 		}
-		
+
 		/// <summary>
 		/// Возвращает указанное количество писем
 		/// </summary>
@@ -127,12 +127,12 @@ namespace Post.Api.Controllers
 							  new Letter[0];
 
 				var enumerable = ret as Letter[] ?? ret.ToArray();
-				foreach(var r in enumerable)
+				foreach (var r in enumerable)
 				{
-					if(string.IsNullOrWhiteSpace(r.Text)) continue;
+					if (string.IsNullOrWhiteSpace(r.Text)) continue;
 
-					r.Text = (r.Text.Length > 15) ? r.Text.Substring(0, 15) :r.Text;
-
+					r.Text = (r.Text.Length > 15) ? r.Text.Substring(0, 15) : r.Text;
+					r.Title = (r.Title.Length > 15) ? r.Title.Substring(0, 15) : r.Title;
 				}
 				_logger.Info($"Получение писем пользователем с id {userIdTo} в количестве {amount} с пропуском {skip} - успешно за {_timer.ElapsedMilliseconds} мс");
 				if (_timer.ElapsedMilliseconds > MaxTime)
@@ -169,7 +169,7 @@ namespace Post.Api.Controllers
 			{
 				_timer.Restart();
 				Helper.CheckLetter(id);
-				var ret = _db.Letters.First(l => l.ID == id);
+				var ret = _db.Letters.Include(x => x.UserFrom).First(l => l.ID == id);
 
 				_logger.Info($"Получение письма {id} - успешно за {_timer.ElapsedMilliseconds} мс");
 				if (_timer.ElapsedMilliseconds > MaxTime)
@@ -200,9 +200,25 @@ namespace Post.Api.Controllers
 				_db.Letters.First(x => x.ID == id).Read = true;
 				_db.SaveChanges();
 			}
-			catch(Exception e)
+			catch (Exception e)
 			{
 				_logger.Error(e, $"Ошибка при изменении статуса письма {id}");
+				throw Helper.GenerateException(e.Message, HttpStatusCode.InternalServerError);
+			}
+		}
+
+		[HttpGet, Route("api/letters/getAmount/{userIdTo}")]
+		public int GetAmountOfLetters(Guid userIdTo)
+		{
+			try
+			{
+				Helper.CheckUser(userIdTo);
+				return _db.Letters.Count(x => x.UserToID == userIdTo);
+				
+			}
+			catch (Exception e)
+			{
+				_logger.Error(e, $"При получении количества писем пользователю {userIdTo} произошла ошибка");
 				throw Helper.GenerateException(e.Message, HttpStatusCode.InternalServerError);
 			}
 		}

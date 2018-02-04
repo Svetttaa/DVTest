@@ -36,11 +36,9 @@
 			this.CurrentUserLabel = new System.Windows.Forms.Label();
 			this.UserSearchButton = new System.Windows.Forms.Button();
 			this.panel2 = new System.Windows.Forms.Panel();
-			this.PreviewLettersTable = new System.Windows.Forms.TableLayoutPanel();
 			this.panel3 = new System.Windows.Forms.Panel();
 			this.LettersUpdateBGW = new System.ComponentModel.BackgroundWorker();
 			this.panel1.SuspendLayout();
-			this.panel2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -152,30 +150,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
 			this.panel2.AutoScroll = true;
 			this.panel2.BackColor = System.Drawing.SystemColors.Control;
-			this.panel2.Controls.Add(this.PreviewLettersTable);
 			this.panel2.Location = new System.Drawing.Point(0, 93);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(346, 403);
 			this.panel2.TabIndex = 1;
-			// 
-			// PreviewLettersTable
-			// 
-			this.PreviewLettersTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.PreviewLettersTable.AutoScroll = true;
-			this.PreviewLettersTable.ColumnCount = 1;
-			this.PreviewLettersTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.PreviewLettersTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.PreviewLettersTable.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.PreviewLettersTable.Location = new System.Drawing.Point(2, 310);
-			this.PreviewLettersTable.Name = "PreviewLettersTable";
-			this.PreviewLettersTable.RowCount = 1;
-			this.PreviewLettersTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.PreviewLettersTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.PreviewLettersTable.Size = new System.Drawing.Size(341, 92);
-			this.PreviewLettersTable.TabIndex = 0;
-			this.PreviewLettersTable.Visible = false;
 			// 
 			// panel3
 			// 
@@ -205,7 +183,6 @@
 			this.Name = "MainForm";
 			this.Text = "Post";
 			this.panel1.ResumeLayout(false);
-			this.panel2.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -220,7 +197,6 @@
 		private System.Windows.Forms.Button UserExitButton;
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.Panel panel3;
-		private System.Windows.Forms.TableLayoutPanel PreviewLettersTable;
 		private System.ComponentModel.BackgroundWorker LettersUpdateBGW;
 	}
 }

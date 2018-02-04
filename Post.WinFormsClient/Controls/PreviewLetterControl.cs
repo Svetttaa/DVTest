@@ -27,16 +27,32 @@ namespace Post.WinFormsClient.Controls
 			TextLabel.Text = _thisLetter.Text+" ...";
 			DateLabel.Text = _thisLetter.Time.ToString();
 			NameLabel.Text = _thisLetter.UserFrom.Name;
-			//NameLabel.Text = ServiceClient.GetUser(_thisLetter.UserFromID).Name;
+			if(!_thisLetter.Read)
+			{
+				TitleLabel.Font = new Font(DefaultFont, FontStyle.Bold);
+				TextLabel.Font = new Font(DefaultFont, FontStyle.Bold);
+				NameLabel.Font = new Font(DefaultFont, FontStyle.Bold);
+				DateLabel.Font = new Font(DefaultFont, FontStyle.Bold);
+			}
 
 		}
 
 		private void PreviewLetterControl_Click(object sender, EventArgs e)
 		{
-			//При открытии установаить read=true и сохранить
-			//(MainForm)Parent.OpenLetter(_thisLetter);
-			//OpenLetter(_thisLetter);
+			if(!_thisLetter.Read)
+			{
+				ServiceClient.ChangeReadStatus(_thisLetter.ID);
+				TitleLabel.Font = new Font(DefaultFont, FontStyle.Regular);
+				TextLabel.Font = new Font(DefaultFont, FontStyle.Regular);
+				NameLabel.Font = new Font(DefaultFont, FontStyle.Regular);
+				DateLabel.Font = new Font(DefaultFont, FontStyle.Regular);
+			}
+	
 			_owner.OpenLetter(_thisLetter);
+			
+
 		}
+
+
 	}
 }
