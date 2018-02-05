@@ -52,6 +52,12 @@ namespace Post.WinFormsClient.Forms
 			panel3.Controls.Add(newPasswordControl);
 		}
 
+		public void ShowSearchControl()
+		{
+			SearchControl newSearchControl=new SearchControl(this) { Left = 0, Top = 0 };
+			panel3.Controls.Add(newSearchControl);
+		}
+
 		public void ShowMainControl()
 		{
 			MainControl newMainControl = new MainControl(this) { Left = 50, Top = 50 };
@@ -66,7 +72,8 @@ namespace Post.WinFormsClient.Forms
 
 		private void UserSearchButton_Click(object sender, EventArgs e)
 		{
-
+			panel3.Controls.Clear();
+			ShowSearchControl();
 		}
 
 		private void WriteLetterButton_Click(object sender, EventArgs e)
@@ -78,10 +85,12 @@ namespace Post.WinFormsClient.Forms
 
 		public void AnswerLetter(User user)
 		{
+
 			panel3.Controls.Clear();
 			var l = new NewLetterControl(this,user);
 			panel3.Controls.Add(l);
 		}
+
 		public void OpenLetter(Letter letter)
 		{
 			panel3.Controls.Clear();
@@ -137,6 +146,26 @@ namespace Post.WinFormsClient.Forms
 		public void MinusLettersCount()
 		{
 			LettersCount--;
+		}
+
+		public void AddSearchUsers(User[] users)
+		{
+			if (users.Length > 0)
+			{
+				panel3.Controls.Add(panel4);
+				panel4.Visible = true;
+				panel4.Controls.Clear();
+				for (int i = 0; i < users.Length; i++)
+				{
+					panel4.Controls.Add(
+					                        new UserSearchControl(users[i], this)
+					                        {
+						                        Top = i * 70 + 20,
+					                        }
+					                       );
+				}
+
+			}
 		}
 	}
 }

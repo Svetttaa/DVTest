@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
 using NLog;
 using Post.Model;
-using System.Data.Entity;
 
 namespace Post.Api.Controllers
 {
@@ -32,6 +32,18 @@ namespace Post.Api.Controllers
 				_timer.Restart();
 
 				var newLetter = _db.Letters.Add(letter);
+
+				foreach (var attach in letter.Attaches)
+				{
+					_db.Attaches.Add(new Attach
+					{
+						AttachBytes = attach.AttachBytes,
+						AttachName = attach.AttachName,
+						ID = Guid.NewGuid(),
+						LetterID = newLetter.ID
+					});
+				}
+
 				_db.SaveChanges();
 
 				_logger.Info($"Отправление сообщения - успешно за {_timer.ElapsedMilliseconds} мс");
@@ -122,12 +134,11 @@ namespace Post.Api.Controllers
 								 .Skip(skip)
 								 .Take(amount)
 								 .ToArray()
-								 .Reverse()
 							  :
 							  new Letter[0];
 
-				var enumerable = ret as Letter[] ?? ret.ToArray();
-				foreach (var r in enumerable)
+				//var enumerable = ret;
+				foreach (var r in ret)
 				{
 					if (string.IsNullOrWhiteSpace(r.Text)) continue;
 
@@ -138,7 +149,7 @@ namespace Post.Api.Controllers
 				if (_timer.ElapsedMilliseconds > MaxTime)
 					_logger.Warn($"Получение писем пользователем с id {userIdTo} в количестве {amount} с пропуском {skip} заняло {_timer.ElapsedMilliseconds} мс");
 
-				return enumerable;
+				return ret;
 			}
 			catch (HttpResponseException)
 			{
@@ -169,7 +180,13 @@ namespace Post.Api.Controllers
 			{
 				_timer.Restart();
 				Helper.CheckLetter(id);
-				var ret = _db.Letters.Include(x => x.UserFrom).First(l => l.ID == id);
+				 var ret = _db.Letters
+							 .Include(x => x.UserFrom)
+							 .First(l => l.ID == id);
+
+				//ret.Attaches = new List<Attach>();
+				//if (_db.Attaches.Any(x => x.LetterID == ret.ID))
+				//	ret.Attaches = _db.Attaches.Where(x => x.LetterID == ret.ID).ToArray();
 
 				_logger.Info($"Получение письма {id} - успешно за {_timer.ElapsedMilliseconds} мс");
 				if (_timer.ElapsedMilliseconds > MaxTime)
@@ -214,7 +231,7 @@ namespace Post.Api.Controllers
 			{
 				Helper.CheckUser(userIdTo);
 				return _db.Letters.Count(x => x.UserToID == userIdTo);
-				
+
 			}
 			catch (Exception e)
 			{

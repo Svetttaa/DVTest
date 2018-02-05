@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -137,6 +138,7 @@ namespace Post.WinFormsClient
 		#endregion
 
 		#region Letters
+
 		public static IEnumerable<Letter> GetLetters(Guid userIdTo, int skip, int amount)
 		{
 			var response = _client.GetAsync($"letters/{userIdTo}/{skip}/{amount}").Result;
@@ -264,8 +266,21 @@ namespace Post.WinFormsClient
 
 			return 0;
 		}
+
+
 		#endregion
+
+		public static byte[] GetBytes(string path)
+		{
+			return File.ReadAllBytes(path);
+		}
+
+		public static void WriteFile(string path, byte[] bytes)
+		{
+			using (Stream file = File.OpenWrite(path))
+			{
+				file.Write(bytes, 0, bytes.Length);
+			}
+		}
 	}
-
-
 }

@@ -37,8 +37,10 @@
 			this.UserSearchButton = new System.Windows.Forms.Button();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.panel3 = new System.Windows.Forms.Panel();
+			this.panel4 = new System.Windows.Forms.Panel();
 			this.LettersUpdateBGW = new System.ComponentModel.BackgroundWorker();
 			this.panel1.SuspendLayout();
+			this.panel3.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -161,10 +163,20 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.panel3.BackColor = System.Drawing.Color.White;
+			this.panel3.Controls.Add(this.panel4);
 			this.panel3.Location = new System.Drawing.Point(352, 0);
 			this.panel3.Name = "panel3";
 			this.panel3.Size = new System.Drawing.Size(578, 495);
 			this.panel3.TabIndex = 2;
+			// 
+			// panel4
+			// 
+			this.panel4.BackColor = System.Drawing.Color.White;
+			this.panel4.Location = new System.Drawing.Point(19, 141);
+			this.panel4.Name = "panel4";
+			this.panel4.Size = new System.Drawing.Size(517, 318);
+			this.panel4.TabIndex = 5;
+			this.panel4.Visible = false;
 			// 
 			// LettersUpdateBGW
 			// 
@@ -183,6 +195,7 @@
 			this.Name = "MainForm";
 			this.Text = "Post";
 			this.panel1.ResumeLayout(false);
+			this.panel3.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -198,5 +211,6 @@
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.Panel panel3;
 		private System.ComponentModel.BackgroundWorker LettersUpdateBGW;
+		private System.Windows.Forms.Panel panel4;
 	}
 }

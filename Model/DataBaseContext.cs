@@ -12,6 +12,7 @@ namespace Post.Model
 	{
 		public DbSet<User> Users { get; set; }
 		public DbSet<Letter> Letters { get; set; }
+		public DbSet<Attach> Attaches { get; set; }
 
 		public DataBaseContext() : base("name=DefaultConnection")
 		{

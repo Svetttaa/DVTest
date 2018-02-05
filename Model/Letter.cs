@@ -11,12 +11,6 @@ namespace Post.Model
 {
 	public class Letter
 	{
-		public struct Attach
-		{
-			public byte[] AttachBytes;
-			public string AttachName;
-		}
-
 		public Guid ID { get; set; } = Guid.NewGuid();
 
 		[Required] public Guid UserFromID { get; set; }
@@ -25,7 +19,7 @@ namespace Post.Model
 		[Required] public Guid UserToID { get; set; }
 		[ForeignKey("UserFromID")] public User UserTo { get; set; }
 
-		[Required] public DateTime Time { get; set; }=DateTime.Now;
+		[Required] public DateTime Time { get; set; } = DateTime.Now;
 		public string Title { get; set; }
 		public string Text { get; set; }
 		public IEnumerable<Attach> Attaches { get; set; }

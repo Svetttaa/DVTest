@@ -20,7 +20,7 @@ namespace Post.Api.Controllers
 		/// Возвращает список всех сотрудников компании
 		/// </summary>
 		/// <returns> список объектов User в случае успеха</returns>
-		[HttpGet, Route("api/getAllUsers")]
+		[HttpGet, Route("api/users/getAllUsers")]
 		public IEnumerable<User> GetAllUsers()
 	    {
 		    _logger.Info($"Получение списка сотрудников");

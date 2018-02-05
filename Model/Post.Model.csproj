@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attach.cs" />
     <Compile Include="DataBaseContext.cs" />
     <Compile Include="Letter.cs" />
     <Compile Include="User.cs" />

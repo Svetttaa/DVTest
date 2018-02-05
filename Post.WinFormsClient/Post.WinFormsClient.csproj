@@ -102,6 +102,18 @@
     <Compile Include="Controls\PreviewLetterControl.Designer.cs">
       <DependentUpon>PreviewLetterControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SearchControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SearchControl.Designer.cs">
+      <DependentUpon>SearchControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UserSearchControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UserSearchControl.Designer.cs">
+      <DependentUpon>UserSearchControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ViewLetterControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -137,6 +149,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\PreviewLetterControl.resx">
       <DependentUpon>PreviewLetterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SearchControl.resx">
+      <DependentUpon>SearchControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UserSearchControl.resx">
+      <DependentUpon>UserSearchControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ViewLetterControl.resx">
       <DependentUpon>ViewLetterControl.cs</DependentUpon>

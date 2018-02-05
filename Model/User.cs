@@ -20,5 +20,9 @@ namespace Post.Model
 		[Required, Display(Name = "ФИО")]
 		public string Name { get; set; }
 
+		public override string ToString()
+		{
+			return $"{Name} ({Account})";
+		}
 	}
 }

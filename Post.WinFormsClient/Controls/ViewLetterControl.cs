@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Post.Model;
 using Post.WinFormsClient.Forms;
@@ -17,7 +11,7 @@ namespace Post.WinFormsClient.Controls
 		private Letter _letter;
 		private MainForm _mf;
 
-		public ViewLetterControl(Guid idLetter,MainForm MF)
+		public ViewLetterControl(Guid idLetter, MainForm MF)
 		{
 			InitializeComponent();
 			_letter = ServiceClient.GetLetter(idLetter);
@@ -26,6 +20,25 @@ namespace Post.WinFormsClient.Controls
 			UserFromLabel.Text = _letter.UserFrom.Name;
 			TextLetterTextBox.Text = _letter.Text;
 			DateLabel.Text = _letter.Time.ToString();
+			//AttachesLabel.Text = "Файлов: " + _letter.Attaches.Count();
+
+			//foreach (var att in _letter.Attaches)
+			//{
+			//	var menuItem = new ToolStripButton
+			//	{
+			//		Text = att.AttachName
+			//	};
+			//	menuItem.Click += (sender, args) =>
+			//				  {
+			//					  SaveAttachDialog.FileName = att.AttachName;
+			//					  if (SaveAttachDialog.ShowDialog() != DialogResult.OK)
+			//						  return;
+
+			//					  ServiceClient.WriteFile(SaveAttachDialog.FileName, att.AttachBytes);
+			//				  };
+
+			//	AttachesMenu.Items.Add(menuItem);
+			//}
 		}
 
 		private void AnswerButton_Click(object sender, EventArgs e)
