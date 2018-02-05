@@ -50,7 +50,7 @@ namespace Post.WinFormsClient.Controls
 		private void DeleteButton_Click(object sender, EventArgs e)
 		{
 			Hide();
-			_mf.MinusLettersCount();
+			//_mf.MinusLettersCount();
 			ServiceClient.DeleteLetter(_letter.ID);
 			_mf.ShowMainControl();
 		}

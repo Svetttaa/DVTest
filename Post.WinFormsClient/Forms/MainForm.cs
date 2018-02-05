@@ -109,6 +109,7 @@ namespace Post.WinFormsClient.Forms
 			}
 			else
 			{
+				//panel2.Controls.Clear();
 				e.Result = KeepUpdating
 					           ? ServiceClient.GetLetters(Settings.Default.CurrentUser.ID, Skip, Amount) as Letter[]
 					           : new Letter[0];
@@ -145,7 +146,7 @@ namespace Post.WinFormsClient.Forms
 
 		public void MinusLettersCount()
 		{
-			LettersCount--;
+			LettersCount--;	
 		}
 
 		public void AddSearchUsers(User[] users)

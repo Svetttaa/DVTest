@@ -151,7 +151,7 @@
 			this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
 			this.panel2.AutoScroll = true;
-			this.panel2.BackColor = System.Drawing.SystemColors.Control;
+			this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
 			this.panel2.Location = new System.Drawing.Point(0, 93);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(346, 403);
@@ -187,6 +187,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.LightSteelBlue;
 			this.ClientSize = new System.Drawing.Size(925, 492);
 			this.Controls.Add(this.panel3);
 			this.Controls.Add(this.panel2);

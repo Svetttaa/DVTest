@@ -36,12 +36,13 @@
 			this.AttachesLabel = new System.Windows.Forms.Label();
 			this.openAttach = new System.Windows.Forms.OpenFileDialog();
 			this.ClearAttaches = new System.Windows.Forms.Button();
+			this.ErrorLabel = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// TitleTextBox
 			// 
 			this.TitleTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.TitleTextBox.Location = new System.Drawing.Point(26, 70);
+			this.TitleTextBox.Location = new System.Drawing.Point(26, 89);
 			this.TitleTextBox.Name = "TitleTextBox";
 			this.TitleTextBox.Size = new System.Drawing.Size(498, 29);
 			this.TitleTextBox.TabIndex = 0;
@@ -49,7 +50,7 @@
 			// TextLetterTextBox
 			// 
 			this.TextLetterTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.TextLetterTextBox.Location = new System.Drawing.Point(26, 113);
+			this.TextLetterTextBox.Location = new System.Drawing.Point(26, 134);
 			this.TextLetterTextBox.Multiline = true;
 			this.TextLetterTextBox.Name = "TextLetterTextBox";
 			this.TextLetterTextBox.Size = new System.Drawing.Size(498, 228);
@@ -132,11 +133,23 @@
 			this.ClearAttaches.Visible = false;
 			this.ClearAttaches.Click += new System.EventHandler(this.ClearAttaches_Click);
 			// 
+			// ErrorLabel
+			// 
+			this.ErrorLabel.AutoSize = true;
+			this.ErrorLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.ErrorLabel.ForeColor = System.Drawing.Color.Red;
+			this.ErrorLabel.Location = new System.Drawing.Point(23, 62);
+			this.ErrorLabel.Name = "ErrorLabel";
+			this.ErrorLabel.Size = new System.Drawing.Size(43, 17);
+			this.ErrorLabel.TabIndex = 7;
+			this.ErrorLabel.Text = "label1";
+			// 
 			// NewLetterControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
+			this.Controls.Add(this.ErrorLabel);
 			this.Controls.Add(this.ClearAttaches);
 			this.Controls.Add(this.AttachesLabel);
 			this.Controls.Add(this.SendButton);
@@ -161,5 +174,6 @@
 		private System.Windows.Forms.Label AttachesLabel;
 		private System.Windows.Forms.OpenFileDialog openAttach;
 		private System.Windows.Forms.Button ClearAttaches;
+		private System.Windows.Forms.Label ErrorLabel;
 	}
 }

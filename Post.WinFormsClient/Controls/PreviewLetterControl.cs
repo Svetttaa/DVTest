@@ -29,10 +29,10 @@ namespace Post.WinFormsClient.Controls
 			NameLabel.Text = _thisLetter.UserFrom.Name;
 			if(!_thisLetter.Read)
 			{
-				TitleLabel.Font = new Font(DefaultFont, FontStyle.Bold);
-				TextLabel.Font = new Font(DefaultFont, FontStyle.Bold);
-				NameLabel.Font = new Font(DefaultFont, FontStyle.Bold);
-				DateLabel.Font = new Font(DefaultFont, FontStyle.Bold);
+				TitleLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+				TextLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+				NameLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+				DateLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
 			}
 
 		}
@@ -42,10 +42,10 @@ namespace Post.WinFormsClient.Controls
 			if(!_thisLetter.Read)
 			{
 				ServiceClient.ChangeReadStatus(_thisLetter.ID);
-				TitleLabel.Font = new Font(DefaultFont, FontStyle.Regular);
-				TextLabel.Font = new Font(DefaultFont, FontStyle.Regular);
-				NameLabel.Font = new Font(DefaultFont, FontStyle.Regular);
-				DateLabel.Font = new Font(DefaultFont, FontStyle.Regular);
+				TitleLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular);
+				TextLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular);
+				NameLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular);
+				DateLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular);
 			}
 	
 			_owner.OpenLetter(_thisLetter);

@@ -17,6 +17,7 @@ namespace Post.WinFormsClient.Controls
 		public NewLetterControl(MainForm owner, User to = null)
 		{
 			InitializeComponent();
+			ErrorLabel.Visible = false;
 			_owner = owner;
 			if (to != null)
 			{
@@ -64,6 +65,11 @@ namespace Post.WinFormsClient.Controls
 
 		private void SendButton_Click(object sender, System.EventArgs e)
 		{
+			if(UserToDropDown.SelectedItem == null)
+			{
+				ErrorLabel.Visible = true;
+				ErrorLabel.Text = "Выберите получателя"; return;
+			}
 			ServiceClient.SendLetter(
 									 new Letter()
 									 {
